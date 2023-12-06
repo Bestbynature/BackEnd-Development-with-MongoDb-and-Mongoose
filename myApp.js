@@ -48,7 +48,7 @@ const peopleData = [
   { name: "John Doe", age: 30, favoriteFoods: ["Pizza", "Burger"] },
   { name: "Jane Doe", age: 25, favoriteFoods: ["Pizza", "Burger"] },
   { name: "Jack Doe", age: 20, favoriteFoods: ["Pizza", "Burger"] },
-]
+];
 
 const createManyPeople = (arrayOfPeople, done) => {
   Person.create(arrayOfPeople, (err, data) => {
@@ -64,7 +64,6 @@ createManyPeople(peopleData, (err, savedPeople) => {
     console.error(err);
   } else {
     console.log("Saved people are equal to:", savedPeople);
-    // Handle the saved document here
   }
 });
 
