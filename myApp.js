@@ -180,13 +180,10 @@ removeById("5f9e9b7b9d0b3e2a3c9e9b7c", (err, removedPerson) => {
 });
 
 const removeManyPeople = (done) => {
-  const nameToRemove = "Jane Doe";
-
-  Person.remove({ name: nameToRemove }, (err, result) => {
-    if (err) {
-      return done(err);
-    }
-    done(null, result);
+  const nameToRemove = "Mary";
+  Person.remove({ name: nameToRemove }, (err, response) => {
+    if (err) return console.log(err);
+    done(null, response);
   });
 };
 
