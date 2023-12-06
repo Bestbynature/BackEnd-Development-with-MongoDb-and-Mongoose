@@ -80,8 +80,21 @@ findPeopleByName("John Doe", (err, peopleFound) => {
 });
 
 const findOneByFood = (food, done) => {
-  done(null /*, data*/);
+  Person.findOne({ favoriteFoods: food }, (err, data) => {
+    if (err) {
+      return done(err);
+    }
+    done(null, data);
+  });
 };
+
+findOneByFood("Pizza", (err, recordFound) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Person found is equal to:", recordFound);
+  }
+});
 
 const findPersonById = (personId, done) => {
   done(null /*, data*/);
