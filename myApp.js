@@ -130,13 +130,13 @@ const findEditThenSave = (personId, done) => {
   });
 };
 
-findEditThenSave("656fe6b2db10fb14e0cb03d5", (err, personUpdated) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log("Person updated is equal to:", personUpdated);
-  }
-});
+// findEditThenSave("656fe6b2db10fb14e0cb03d5", (err, personUpdated) => {
+//   if (err) {
+//     console.error(err);
+//   } else {
+//     console.log("Person updated is equal to:", personUpdated);
+//   }
+// });
 
 const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
@@ -150,7 +150,7 @@ const findAndUpdate = (personName, done) => {
         return done(err);
       }
       done(null, updatedPerson);
-    }
+    },
   );
 };
 
@@ -180,24 +180,23 @@ removeById("5f9e9b7b9d0b3e2a3c9e9b7c", (err, removedPerson) => {
 });
 
 const removeManyPeople = (done) => {
-  const nameToRemove = "Mary";
+  const nameToRemove = "Jane Doe";
 
-  Person.remove({ name: nameToRemove }, (err, response) => {
+  Person.remove({ name: nameToRemove }, (err, result) => {
     if (err) {
       return done(err);
     }
-    done(null, response);
+    done(null, result);
   });
 };
 
-removeManyPeople((err, response) => {
+removeManyPeople((err, result) => {
   if (err) {
     console.error(err);
   } else {
-    console.log("Removed people:", response);
+    console.log("Removed people:", result);
   }
 });
-
 
 const queryChain = (done) => {
   const foodToSearch = "burrito";
