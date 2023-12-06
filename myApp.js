@@ -142,15 +142,15 @@ const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
 
   Person.findOneAndUpdate(
-    { name: personName }, 
-    { age: ageToSet }, 
-    { new: true }, 
+    { name: personName },
+    { age: ageToSet },
+    { new: true },
     (err, updatedPerson) => {
       if (err) {
         return done(err);
       }
-      done(null, updatedPerson); 
-    }
+      done(null, updatedPerson);
+    },
   );
 };
 
@@ -161,7 +161,6 @@ findAndUpdate("John Doe", (err, updatedPerson) => {
     console.log("Updated person:", updatedPerson);
   }
 });
-
 
 const removeById = (personId, done) => {
   done(null /*, data*/);
