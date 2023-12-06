@@ -150,7 +150,7 @@ const findAndUpdate = (personName, done) => {
         return done(err);
       }
       done(null, updatedPerson);
-    },
+    }
   );
 };
 
@@ -182,9 +182,23 @@ removeById("5f9e9b7b9d0b3e2a3c9e9b7c", (err, removedPerson) => {
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
 
-  done(null /*, data*/);
+  Person.remove({ name: nameToRemove }, (err, response) => {
+    if (err) {
+      return done(err);
+    }
+    done(null, response);
+  });
 };
-// I need to work here
+
+removeManyPeople((err, response) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Removed people:", response);
+  }
+});
+
+
 const queryChain = (done) => {
   const foodToSearch = "burrito";
 
