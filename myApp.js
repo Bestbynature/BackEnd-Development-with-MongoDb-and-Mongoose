@@ -163,7 +163,6 @@ findAndUpdate("John Doe", (err, updatedPerson) => {
 });
 
 const removeById = (personId, done) => {
-
   Person.findByIdAndRemove(personId, (err, removedPerson) => {
     if (err) {
       return done(err);
