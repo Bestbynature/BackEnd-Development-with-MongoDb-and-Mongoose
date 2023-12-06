@@ -208,9 +208,15 @@ const queryChain = (done) => {
       }
       done(null, data);
     });
-
-  done(null /*, data*/);
 };
+
+queryChain((err, result) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Query chain result:", result);
+  }
+});
 
 /** **Well Done !!!**
 /* You completed these challenges, let's go celebrate !
