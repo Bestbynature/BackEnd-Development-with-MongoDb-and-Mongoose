@@ -44,9 +44,29 @@ createAndSavePerson((err, savedPerson) => {
 //   done(null /*, data*/);
 // };
 
+const peopleData = [
+  { name: "John Doe", age: 30, favoriteFoods: ["Pizza", "Burger"] },
+  { name: "Jane Doe", age: 25, favoriteFoods: ["Pizza", "Burger"] },
+  { name: "Jack Doe", age: 20, favoriteFoods: ["Pizza", "Burger"] },
+]
+
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, (err, data) => {
+    if (err) {
+      return done(err);
+    }
+    done(null, data);
+  });
 };
+
+createManyPeople(peopleData, (err, savedPeople) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Saved people are equal to:", savedPeople);
+    // Handle the saved document here
+  }
+});
 
 const findPeopleByName = (personName, done) => {
   done(null /*, data*/);
