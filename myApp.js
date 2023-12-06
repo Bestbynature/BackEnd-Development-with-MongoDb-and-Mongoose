@@ -142,14 +142,14 @@ const findAndUpdate = (personName, done) => {
   const ageToSet = 20;
 
   Person.findOneAndUpdate(
-    { name: personName }, 
-    { age: ageToSet }, 
-    { new: true }, 
+    { name: personName },
+    { age: ageToSet },
+    { new: true },
     (err, updatedPerson) => {
       if (err) {
         return done(err);
       }
-      done(null, updatedPerson); 
+      done(null, updatedPerson);
     }
   );
 };
@@ -162,9 +162,7 @@ findAndUpdate("John Doe", (err, updatedPerson) => {
   }
 });
 
-
 const removeById = (personId, done) => {
-
   Person.findByIdAndRemove(personId, (err, removedPerson) => {
     if (err) {
       return done(err);
@@ -184,9 +182,23 @@ removeById("5f9e9b7b9d0b3e2a3c9e9b7c", (err, removedPerson) => {
 const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
 
-  done(null /*, data*/);
+  Person.remove({ name: nameToRemove }, (err, response) => {
+    if (err) {
+      return done(err);
+    }
+    done(null, response);
+  });
 };
-// I need to work here
+
+removeManyPeople((err, response) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Removed people:", response);
+  }
+});
+
+
 const queryChain = (done) => {
   const foodToSearch = "burrito";
 
