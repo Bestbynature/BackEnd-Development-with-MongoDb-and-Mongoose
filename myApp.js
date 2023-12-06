@@ -15,8 +15,34 @@ let Person;
 Person = mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  const personData = {
+    name: "John Doe",
+    age: 30,
+    favoriteFoods: ["Pizza", "Burger"],
+  };
+
+  const newPerson = new Person(personData);
+
+  newPerson.save((err, data) => {
+    if (err) {
+      return done(err);
+    }
+    done(null, data);
+  });
 };
+
+createAndSavePerson((err, savedPerson) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Saved person is equal to:", savedPerson);
+    // Handle the saved document here
+  }
+});
+
+// const createAndSavePerson = (done) => {
+//   done(null /*, data*/);
+// };
 
 const createManyPeople = (arrayOfPeople, done) => {
   done(null /*, data*/);
