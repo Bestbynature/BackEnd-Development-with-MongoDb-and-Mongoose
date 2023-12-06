@@ -97,8 +97,22 @@ findOneByFood("Pizza", (err, recordFound) => {
 });
 
 const findPersonById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findById(personId, (err, data) => {
+    if (err) {
+      return done(err);
+    }
+    done(null, data);
+  });
+  // done(null /*, data*/);
 };
+
+findPersonById("5f9e9b7b9d0b3e2a3c9e9b7c", (err, personFound) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Person found by id is equal to:", personFound);
+  }
+});
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
