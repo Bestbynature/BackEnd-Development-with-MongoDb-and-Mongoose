@@ -212,7 +212,7 @@ const queryChain = (done) => {
   done(null /*, data*/);
 };
 
-/** **Well Done !!**
+/** **Well Done !!!**
 /* You completed these challenges, let's go celebrate !
  */
 
