@@ -116,14 +116,11 @@ findPersonById("5f9e9b7b9d0b3e2a3c9e9b7c", (err, personFound) => {
 
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
-
   Person.findById(personId, (err, personFound) => {
     if (err) {
       return done(err);
     }
-
     personFound.favoriteFoods.push(foodToAdd);
-
     personFound.save((err, updatedPerson) => {
       if (err) {
         return done(err);
@@ -133,7 +130,7 @@ const findEditThenSave = (personId, done) => {
   });
 };
 
-findEditThenSave("5f9e9b7b9d0b3e2a3c9e9b7c", (err, personUpdated) => {
+findEditThenSave("656fe6b2db10fb14e0cb03d5", (err, personUpdated) => {
   if (err) {
     console.error(err);
   } else {
